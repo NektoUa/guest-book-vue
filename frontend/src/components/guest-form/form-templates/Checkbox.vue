@@ -6,6 +6,8 @@
 </template>
 
 <script>
+// import { eventEmitter } from "../../../main";
+
 export default {
   data: () => ({
     checkbox: false,
