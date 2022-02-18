@@ -22,13 +22,41 @@
         >
         <br />
         <label for="message">Your opinion</label>
-        <v-textarea solo name="message" label="Write your opinion"></v-textarea>
-        <!-- <v-checkbox
+        <v-textarea
+          :rules="opinionRules"
+          required
+          solo
+          name="message"
+          label="Write your opinion"
+        ></v-textarea>
+        <v-select :items="items" label="Star"></v-select>
+        <v-checkbox
           v-model="checkbox"
           :label="`Agree with the rules : ${checkbox.toString()}`"
-        ></v-checkbox> -->
+        ></v-checkbox>
         <v-btn color="secondary" elevation="2">Subimitti</v-btn>
       </v-col>
     </v-form>
   </div>
 </template>
+
+<script>
+export default {
+  data: () => ({
+    valid: false,
+    checkbox: true,
+    items: ["5", "4", "3", "2"],
+    nickname: "",
+    nameRules: [
+      (v) => !!v || "Name is required",
+      (v) => v.length <= 10 || "Name must be less than 10 characters",
+    ],
+    email: "",
+    emailRules: [
+      (v) => !!v || "E-mail is required",
+      (v) => /.+@.+/.test(v) || "E-mail must be valid",
+    ],
+    opinionRules: [(v) => !!v || "Field is empty"],
+  }),
+};
+</script>
