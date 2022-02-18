@@ -1,5 +1,6 @@
 <template>
   <div>
+    <GuestFormOut />
     <p>
       Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ullam temporibus
       similique sit cum eum corrupti officia, dolore quam repudiandae commodi.
@@ -10,3 +11,13 @@
     </form>
   </div>
 </template>
+
+<script>
+import GuestFormOut from "./GuestFormOut.vue";
+
+export default {
+  components: {
+    GuestFormOut,
+  },
+};
+</script>
