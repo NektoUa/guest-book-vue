@@ -1,31 +1,13 @@
 <template>
   <div>
     <h1>Please write your opinion</h1>
-
     <v-form v-model="valid">
       <v-col cols="12" md="6">
-        <v-text-field
-          v-model="person.nickname"
-          :rules="nameRules"
-          :counter="10"
-          label="Nickname"
-          required
-        ></v-text-field>
+        <Name />
         <Email />
-        <br />
-        <label for="person.text">Your opinion</label>
-        <v-textarea
-          :rules="opinionRules"
-          required
-          solo
-          name="person.text"
-          label="Write your opinion"
-        ></v-textarea>
-        <v-select :items="person.items" label="Star"></v-select>
-        <v-checkbox
-          v-model="checkbox"
-          :label="`Agree with the rules : ${checkbox.toString()}`"
-        ></v-checkbox>
+        <Textarea />
+        <Select />
+        <Checkbox />
         <v-btn color="secondary" elevation="2" @click="changeForm">Add</v-btn>
       </v-col>
     </v-form>
@@ -33,12 +15,20 @@
 </template>
 
 <script>
+import Name from "./form-templates/Name.vue";
 import Email from "./form-templates/Email.vue";
+import Textarea from "./form-templates/Textarea.vue";
+import Select from "./form-templates/Select.vue";
+import Checkbox from "./form-templates/Checkbox.vue";
 import { eventEmitter } from "../../main";
 
 export default {
   components: {
+    Name,
     Email,
+    Textarea,
+    Select,
+    Checkbox,
   },
   data: () => ({
     person: {
@@ -48,20 +38,16 @@ export default {
       text: "",
     },
     valid: false,
-    checkbox: true,
-    nameRules: [
-      (v) => !!v || "Name is required",
-      (v) => v.length <= 10 || "Name must be less than 10 characters",
-    ],
+    checkbox: false,
     opinionRules: [(v) => !!v || "Field is empty"],
   }),
 
-  methods: {
-    changeForm() {
-      if (this.checkbox) {
-        eventEmitter.$emit("yourAnswer", this.person.nickname);
-      }
-    },
-  },
+  //   methods: {
+  //     changeForm() {
+  //       if (this.checkbox) {
+  //         eventEmitter.$emit("yourAnswer", this.person.nickname);
+  //       }
+  //     },
+  //   },
 };
 </script>

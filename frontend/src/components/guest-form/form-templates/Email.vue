@@ -1,5 +1,5 @@
 <template>
-  <v-col cols="12" md="12">
+  <div>
     <v-text-field
       v-model="email"
       :rules="emailRules"
@@ -9,7 +9,7 @@
     <small id="emailHelp" class="form-text text-muted"
       >We'll never share your email with anyone else.</small
     >
-  </v-col>
+  </div>
 </template>
 
 <script>
