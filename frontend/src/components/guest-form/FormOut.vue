@@ -1,7 +1,8 @@
 <template>
   <div>
-    <!-- <h3>{{ nickname }}</h3> -->
-    <p>{{ answer }}</p>
+    <h3>{{ answer.nickname }}</h3>
+    <span>{{ answer.stars }}</span>
+    <p>{{ answer.text }}</p>
   </div>
 </template>
 
@@ -10,7 +11,7 @@ import { eventEmitter } from "../../main";
 export default {
   data() {
     return {
-      answer: "Medelin",
+      answer: {},
     };
   },
   created() {

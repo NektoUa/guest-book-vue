@@ -12,7 +12,7 @@
         ></v-text-field>
 
         <v-text-field
-          v-model="email"
+          v-model="person.email"
           :rules="emailRules"
           label="E-mail"
           required
@@ -23,6 +23,7 @@
 
         <label for="person.text">Your opinion</label>
         <v-textarea
+          v-model="person.text"
           :rules="opinionRules"
           required
           solo
@@ -36,7 +37,6 @@
           :label="`Agree with the rules : ${checkbox.toString()}`"
         ></v-checkbox>
         <v-btn color="secondary" elevation="2" @click="changeForm">Add</v-btn>
-        <span> {{ person.name }}</span>
       </v-col>
     </v-form>
   </div>
@@ -55,13 +55,21 @@ export default {
     valid: false,
     items: ["5", "4", "3", "2"],
     checkbox: false,
+    nameRules: [
+      (v) => !!v || "Name is required",
+      (v) => v.length <= 10 || "Name must be less than 10 characters",
+    ],
+    emailRules: [
+      (v) => !!v || "E-mail is required",
+      (v) => /.+@.+/.test(v) || "E-mail must be valid",
+    ],
     opinionRules: [(v) => !!v || "Field is empty"],
   }),
 
   methods: {
     changeForm() {
       if (this.checkbox) {
-        eventEmitter.$emit("yourAnswer", this.person.nickname);
+        eventEmitter.$emit("yourAnswer", this.person);
       }
     },
   },
