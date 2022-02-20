@@ -55,6 +55,7 @@ export default {
     valid: false,
     items: ["5", "4", "3", "2"],
     checkbox: false,
+    exception = "",
     nameRules: [
       (v) => !!v || "Name is required",
       (v) => v.length <= 10 || "Name must be less than 10 characters",
@@ -65,10 +66,27 @@ export default {
     ],
     opinionRules: [(v) => !!v || "Field is empty"],
   }),
+  computed: {
+    rules() {
+      let rule = [];
+      let exception = "";
+      this.person.nickname && this.person.nickname.length <= 10
+        ? rule.push(true)
+        : (exception = "Please write real nickname");
+      this.person.email && this.person.email.match(/[a-z0-9]@/gi)
+        ? rule.push(true)
+        : (exception = "E-mail must be valid and contain '@'");
+      this.person.text
+        ? rule.push(true)
+        : (exception = "Please write your opinion");
+      console.log(exception);
+      return rule.length == 3 ? true : false;
+    },
+  },
 
   methods: {
     changeForm() {
-      if (this.checkbox) {
+      if (this.checkbox && this.rules) {
         eventEmitter.$emit("yourAnswer", this.person);
       }
     },
