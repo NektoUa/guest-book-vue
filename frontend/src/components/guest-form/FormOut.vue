@@ -2,6 +2,7 @@
   <div>
     <h3>{{ answer.nickname }}</h3>
     <span>{{ answer.stars }}</span>
+    <span>{{ answer.date }}</span>
     <p>{{ answer.text }}</p>
   </div>
 </template>

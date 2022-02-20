@@ -2,7 +2,7 @@
   <div>
     <h1>Please write your opinion</h1>
     <v-form v-model="valid">
-      <v-col cols="12" md="6">
+      <v-col cols="12">
         <v-text-field
           v-model="person.nickname"
           :rules="nameRules"
@@ -20,7 +20,7 @@
         <small id="emailHelp" class="form-text text-muted"
           >We'll never share your email with anyone else.</small
         >
-
+        <br /><br />
         <label for="person.text">Your opinion</label>
         <v-textarea
           v-model="person.text"
@@ -51,11 +51,11 @@ export default {
       nickname: "",
       email: "",
       text: "",
+      date: "",
     },
     valid: false,
     items: ["5", "4", "3", "2"],
     checkbox: false,
-    exception = "",
     nameRules: [
       (v) => !!v || "Name is required",
       (v) => v.length <= 10 || "Name must be less than 10 characters",
@@ -87,6 +87,7 @@ export default {
   methods: {
     changeForm() {
       if (this.checkbox && this.rules) {
+        this.person.date = new Date().toLocaleDateString();
         eventEmitter.$emit("yourAnswer", this.person);
       }
     },
