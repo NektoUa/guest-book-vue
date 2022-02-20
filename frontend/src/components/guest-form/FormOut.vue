@@ -12,12 +12,15 @@ import { eventEmitter } from "../../main";
 export default {
   data() {
     return {
-      answer: {},
+      answer: [],
     };
   },
   created() {
     eventEmitter.$on("yourAnswer", (opinionForm) => {
-      this.answer = opinionForm;
+      // this.$set(this.answer, opinionForm.nickname, opinionForm);
+      this.answer.push({ ggltol: 23, gfg: 45 });
+      // this.answer = opinionForm;
+      console.log(this.answer);
     });
   },
 };

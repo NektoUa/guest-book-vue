@@ -89,6 +89,12 @@ export default {
       if (this.checkbox && this.rules) {
         this.person.date = new Date().toLocaleDateString();
         eventEmitter.$emit("yourAnswer", this.person);
+        this.person = {
+          nickname: "",
+          email: "",
+          text: "",
+          date: "",
+        };
       }
     },
   },
