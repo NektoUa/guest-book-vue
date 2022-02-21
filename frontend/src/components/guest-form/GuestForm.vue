@@ -1,8 +1,8 @@
 <template>
-  <div>
-    <h1>Please write your opinion</h1>
-    <v-form v-model="valid">
-      <v-col cols="12">
+  <div class="justify-center px-14 mx-3">
+    <h1 class="text-center">Please write your opinion</h1>
+    <v-form v-model="valid" class="d-flex justify-center">
+      <v-col cols="6">
         <v-text-field
           v-model="person.nickname"
           :rules="nameRules"

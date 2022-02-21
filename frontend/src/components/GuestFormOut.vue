@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="inline-flex justify-center mb-6" flat tile>
     <GuestForm />
     <FormOut />
   </div>
