@@ -73,7 +73,7 @@ export default {
       this.person.nickname && this.person.nickname.length <= 10
         ? rule.push(true)
         : (exception = "Please write real nickname");
-      this.person.email && this.person.email.match(/[a-z0-9]@/gi)
+      this.person.email && this.person.email.match(/[a-z0-9]@\w+\.\w/gi)
         ? rule.push(true)
         : (exception = "E-mail must be valid and contain '@'");
       this.person.text
