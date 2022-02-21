@@ -6,7 +6,7 @@
       <v-toolbar-title>Page title</v-toolbar-title>
 
       <v-spacer></v-spacer>
-
+      <span>{{ currentWeather }}</span>
       <v-btn icon>
         <v-icon>mdi-heart</v-icon>
       </v-btn>
@@ -31,3 +31,22 @@
     </v-app-bar>
   </div>
 </template>
+
+<script>
+import axios from "axios";
+
+export default {
+  data() {
+    return {
+      currentWeather: "Today",
+    };
+  },
+  mounted() {
+    axios
+      .get(
+        "api.openweathermap.org/data/2.5/weather?lat=47.8508&lon=35.1183&appid="
+      )
+      .then((response) => (this.currentWeather = response.data));
+  },
+};
+</script>
