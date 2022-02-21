@@ -6,10 +6,13 @@
       <v-toolbar-title>Page title</v-toolbar-title>
 
       <v-spacer></v-spacer>
-      <span>{{ currentWeather }}</span>
-      <v-btn icon>
-        <v-icon>mdi-heart</v-icon>
-      </v-btn>
+      <span
+        >{{ Math.round(currentWeather.main.temp) }} &#176;C
+        {{ currentWeather.name }}</span
+      >
+      <!-- <v-btn icon> -->
+      <!-- <v-icon>{{ currentWeather.name }}</v-icon> -->
+      <!-- </v-btn> -->
 
       <v-btn icon>
         <v-icon>mdi-magnify</v-icon>
@@ -38,13 +41,13 @@ import axios from "axios";
 export default {
   data() {
     return {
-      currentWeather: "Today",
+      currentWeather: [],
     };
   },
   mounted() {
     axios
       .get(
-        "api.openweathermap.org/data/2.5/weather?lat=47.8508&lon=35.1183&appid="
+        "http://api.openweathermap.org/data/2.5/weather?lat=47.8508&lon=35.1183&units=metric&appid="
       )
       .then((response) => (this.currentWeather = response.data));
   },
