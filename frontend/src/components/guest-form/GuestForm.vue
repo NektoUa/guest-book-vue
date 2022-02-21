@@ -31,7 +31,7 @@
           label="Write your opinion"
         ></v-textarea>
 
-        <v-select :items="items" label="Star"></v-select>
+        <v-select v-model="person.star" :items="items" label="Star"></v-select>
         <v-checkbox
           v-model="checkbox"
           :label="`Agree with the rules : ${checkbox.toString()}`"
@@ -52,6 +52,7 @@ export default {
       email: "",
       text: "",
       date: "",
+      star: "",
     },
     valid: false,
     items: ["5", "4", "3", "2"],

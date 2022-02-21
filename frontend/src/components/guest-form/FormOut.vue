@@ -4,7 +4,8 @@
       <h3>
         {{ answer.nickname }}
       </h3>
-      <!-- <span>{{ answer.stars }}</span> -->
+      <span>{{ answer.star }} stars</span>
+      <br />
       <span>{{ answer.date }}</span>
       <p>{{ answer.text }}</p>
     </div>
